@@ -1,36 +1,767 @@
+<!DOCTYPE html>
+<html lang="tr" class="scroll-smooth">
 <head>
-  <title>    10B Web  </title>
-</head>
-
-<body  style="background-color:Gray;">
-  
-  <center>
-  <img src="arac1.webp">
-  
-  <h1  style="background-color:Olive; color: red;" >Formula Araçları Hakkında Herşey</h1>
-  Bu sitede formula araçları hakkıdna çok şeyi bulabileceksiniz.
-  Formula araçları...
-  <br> Bu sitede formula araçları hakkıdna çok şeyi bulabileceksiniz.
-  <br> Formula araçları...
-  <div> <!-- Bölüm ekleme -->
-      <h2>Teknik özellikleri</h2>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formula 1 Araçları | Teknoloji ve Mühendislik Rehberi</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     
-  <hr>
-    <a href="./teknik/index.htm">
-      <img height="100px" src="ayardugme.png"/>
-    </a>
-  
-  </div>
-  <hr>
-  <div> <!-- Bölüm ekleme -->
-    <h2>Pist özellikleri</h2>
-  </div>
-  <marquee>Web siteme hoş geldiniz.</marquee>
-      
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        f1: {
+                            red: '#E10600',
+                            dark: '#0B0D11',
+                            card: '#151821',
+                            border: '#242936',
+                            muted: '#94A3B8'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-[#0B0D11] text-slate-100 font-sans antialiased selection:bg-[#E10600] selection:text-white">
+
+    <!-- Üst Gezinme Menüsü (Navbar) -->
+    <header class="sticky top-0 z-50 bg-[#0B0D11]/90 backdrop-blur-md border-b border-[#242936]">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <!-- Logo / Başlık -->
+                <a href="#genel-bakis" class="flex items-center space-x-2.5 group">
+                    <span class="w-3 h-7 bg-[#E10600] rounded-sm inline-block transform -skew-x-12 group-hover:scale-105 transition-transform"></span>
+                    <span class="font-extrabold text-lg tracking-tight text-white">F1 <span class="text-slate-400 font-medium">MÜHENDİSLİK</span></span>
+                </a>
+
+                <!-- Masaüstü Menü Linkleri -->
+                <nav class="hidden md:flex items-center space-x-7 text-sm font-medium text-slate-300">
+                    <a href="#genel-bakis" class="hover:text-white transition-colors">Genel Bakış</a>
+                    <a href="#parcalar" class="hover:text-white transition-colors">Parçalar & Aerodinamik</a>
+                    <a href="#guc-unitesi" class="hover:text-white transition-colors">Güç Ünitesi</a>
+                    <a href="#simulator" class="hover:text-white transition-colors">Sürüş Simülatörü</a>
+                    <a href="#veriler" class="hover:text-white transition-colors">Temel Veriler</a>
+                </nav>
+
+                <!-- Mobil Menü Butonu -->
+                <button id="mobile-menu-btn" aria-label="Menüyü Aç/Kapat" class="md:hidden p-2 rounded-lg text-slate-300 hover:text-white hover:bg-[#151821] focus:outline-none">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobil Açılır Menü -->
+        <div id="mobile-menu" class="hidden md:hidden bg-[#151821] border-b border-[#242936] px-4 pt-2 pb-4 space-y-1">
+            <a href="#genel-bakis" class="mobile-link block px-3 py-2.5 rounded-lg text-base font-medium text-slate-200 hover:bg-[#242936]">Genel Bakış</a>
+            <a href="#parcalar" class="mobile-link block px-3 py-2.5 rounded-lg text-base font-medium text-slate-200 hover:bg-[#242936]">Parçalar & Aerodinamik</a>
+            <a href="#guc-unitesi" class="mobile-link block px-3 py-2.5 rounded-lg text-base font-medium text-slate-200 hover:bg-[#242936]">Güç Ünitesi</a>
+            <a href="#simulator" class="mobile-link block px-3 py-2.5 rounded-lg text-base font-medium text-slate-200 hover:bg-[#242936]">Sürüş Simülatörü</a>
+            <a href="#veriler" class="mobile-link block px-3 py-2.5 rounded-lg text-base font-medium text-slate-200 hover:bg-[#242936]">Temel Veriler</a>
+        </div>
+    </header>
+
+    <main>
+        <!-- 1. Hero (Giriş) Bölümü -->
+        <section id="genel-bakis" class="relative pt-16 pb-20 sm:pt-24 sm:pb-28 border-b border-[#242936] overflow-hidden">
+            <!-- Arka Plan Hafif Işık Efekti -->
+            <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-3xl h-64 bg-[#E10600]/10 blur-[120px] pointer-events-none"></div>
+
+            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+                <div class="max-w-3xl">
+                    <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-[#151821] border border-[#242936] text-xs font-semibold text-[#E10600] mb-6">
+                        <span class="w-2 h-2 rounded-full bg-[#E10600] animate-pulse"></span>
+                        <span>OTOMOBİL MÜHENDİSLİĞİNİN ZİRVESİ</span>
+                    </div>
+                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white leading-tight mb-6">
+                        Ters Çevrilmiş Bir Uçak: <span class="text-slate-400">Formula 1 Aracı</span>
+                    </h1>
+                    <p class="text-lg sm:text-xl text-slate-300 leading-relaxed mb-8">
+                        Formula 1 araçları yalnızca yüksek hızlara ulaşmak için değil, virajları fizik kurallarını zorlayarak dönebilmek için tasarlanır. Karbon fiber monokok şasisi, gelişmiş hibrit güç ünitesi ve havayı bir bıçak gibi kesip aracı yere yapıştıran aerodinamik yapısıyla yeryüzündeki en verimli yarış makineleridir.
+                    </p>
+                    <div class="flex flex-wrap gap-4">
+                        <a href="#parcalar" class="px-6 py-3.5 rounded-xl bg-[#E10600] hover:bg-red-700 text-white font-semibold text-sm transition-colors shadow-lg shadow-[#E10600]/20">
+                            Araç Parçalarını Keşfet
+                        </a>
+                        <a href="#simulator" class="px-6 py-3.5 rounded-xl bg-[#151821] hover:bg-[#1E222E] border border-[#242936] text-slate-200 font-semibold text-sm transition-colors">
+                            Sürüş Simülatörünü Dene
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Özet 3 Temel Prensip -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-16">
+                    <div class="bg-[#151821] border border-[#242936] rounded-2xl p-6">
+                        <div class="text-[#E10600] font-bold text-sm mb-2">01 / YERE BASMA KUVVETİ</div>
+                        <h3 class="text-lg font-bold text-white mb-2">Downforce Etkisi</h3>
+                        <p class="text-sm text-slate-400 leading-relaxed">
+                            Uçak kanatlarının aksine F1 kanatları havayı yukarı iter; bu da aracı kendi ağırlığının katbekat fazlası güçle asfalta bastırır.
+                        </p>
+                    </div>
+                    <div class="bg-[#151821] border border-[#242936] rounded-2xl p-6">
+                        <div class="text-[#E10600] font-bold text-sm mb-2">02 / KARBON FİBER ŞASİ</div>
+                        <h3 class="text-lg font-bold text-white mb-2">Hafiflik ve Güvenlik</h3>
+                        <p class="text-sm text-slate-400 leading-relaxed">
+                            Sürücüyü saran yaşam hücresi (monokok), çelikten çok daha hafif olmasına rağmen yüksek enerjili çarpışmalara dayanacak sağlamlıktadır.
+                        </p>
+                    </div>
+                    <div class="bg-[#151821] border border-[#242936] rounded-2xl p-6">
+                        <div class="text-[#E10600] font-bold text-sm mb-2">03 / TERMAL VERİMLİLİK</div>
+                        <h3 class="text-lg font-bold text-white mb-2">%50'nin Üzerinde Verim</h3>
+                        <p class="text-sm text-slate-400 leading-relaxed">
+                            Standart binek araç motorları yakıt enerjisinin %30'unu harekete çevirirken, F1 hibrit üniteleri %52'nin üzerine çıkar.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. Etkileşimli Araç Parçaları & Aerodinamik Bölümü -->
+        <section id="parcalar" class="py-20 border-b border-[#242936]">
+            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="mb-12">
+                    <h2 class="text-3xl sm:text-4xl font-bold text-white mb-3">Parçalar & Aerodinamik</h2>
+                    <p class="text-slate-400 max-w-2xl">
+                        Bir F1 aracının her milimetresi hava akışını yönetmek üzere şekillendirilir. Şema üzerindeki noktalara veya alttaki sekmelere tıklayarak parçaların görevlerini inceleyin.
+                    </p>
+                </div>
+
+                <!-- Etkileşimli SVG F1 Üstten Görünüm Şeması -->
+                <div class="bg-[#151821] border border-[#242936] rounded-2xl p-6 sm:p-8 mb-8">
+                    <div class="w-full overflow-x-auto">
+                        <svg viewBox="0 0 800 280" class="w-full min-w-[600px] h-auto select-none" aria-label="Formula 1 Aracı Etkileşimli Şeması">
+                            <!-- Zemin Izgara Çizgileri -->
+                            <line x1="40" y1="140" x2="760" y2="140" stroke="#242936" stroke-width="1" stroke-dasharray="6,6" />
+                            
+                            <!-- Arka Kanat -->
+                            <rect x="65" y="75" width="35" height="130" rx="6" fill="#1E2433" stroke="#475569" stroke-width="2" />
+                            <line x1="82" y1="75" x2="82" y2="205" stroke="#E10600" stroke-width="2" />
+
+                            <!-- Arka Lastikler -->
+                            <rect x="125" y="42" width="68" height="44" rx="8" fill="#0F1219" stroke="#64748B" stroke-width="2.5" />
+                            <rect x="125" y="194" width="68" height="44" rx="8" fill="#0F1219" stroke="#64748B" stroke-width="2.5" />
+
+                            <!-- Zemin (Floor) & Difüzör Alanı -->
+                            <path d="M135,88 L470,72 L470,208 L135,192 Z" fill="#181D29" stroke="#334155" stroke-width="1.5" />
+
+                            <!-- Motor Kapağı ve Sidepodlar -->
+                            <path d="M150,115 Q260,85 450,92 L465,140 L450,188 Q260,195 150,165 Z" fill="#232A3B" stroke="#475569" stroke-width="2" />
+
+                            <!-- Kokpit ve Halo -->
+                            <ellipse cx="425" cy="140" rx="45" ry="18" fill="#0B0D11" stroke="#64748B" stroke-width="2" />
+                            <path d="M395,140 L455,140 M435,123 Q465,140 435,157" fill="none" stroke="#E10600" stroke-width="3.5" stroke-linecap="round" />
+
+                            <!-- Burun Konisi (Nose) -->
+                            <path d="M470,122 L685,131 L685,149 L470,158 Z" fill="#232A3B" stroke="#475569" stroke-width="2" />
+
+                            <!-- Ön Lastikler -->
+                            <rect x="555" y="48" width="62" height="36" rx="7" fill="#0F1219" stroke="#64748B" stroke-width="2.5" />
+                            <rect x="555" y="196" width="62" height="36" rx="7" fill="#0F1219" stroke="#64748B" stroke-width="2.5" />
+
+                            <!-- Ön Kanat -->
+                            <path d="M675,55 L725,65 L725,215 L675,225 Z" fill="#1E2433" stroke="#475569" stroke-width="2" />
+                            <line x1="705" y1="60" x2="705" y2="220" stroke="#E10600" stroke-width="2" />
+
+                            <!-- Etkileşimli Sıcak Noktalar (Hotspots) -->
+                            <!-- 1. Ön Kanat -->
+                            <g class="hotspot cursor-pointer" data-part="front-wing">
+                                <circle cx="705" cy="140" r="14" fill="#E10600" fill-opacity="0.25" />
+                                <circle cx="705" cy="140" r="7" fill="#E10600" stroke="#FFFFFF" stroke-width="2" />
+                                <text x="705" y="38" text-anchor="middle" fill="#CBD5E1" font-size="12" font-weight="600">Ön Kanat</text>
+                            </g>
+
+                            <!-- 2. Lastikler -->
+                            <g class="hotspot cursor-pointer" data-part="tyres">
+                                <circle cx="586" cy="66" r="14" fill="#E10600" fill-opacity="0.25" />
+                                <circle cx="586" cy="66" r="7" fill="#E10600" stroke="#FFFFFF" stroke-width="2" />
+                                <text x="586" y="28" text-anchor="middle" fill="#CBD5E1" font-size="12" font-weight="600">Lastikler</text>
+                            </g>
+
+                            <!-- 3. Halo -->
+                            <g class="hotspot cursor-pointer" data-part="halo">
+                                <circle cx="445" cy="140" r="14" fill="#E10600" fill-opacity="0.25" />
+                                <circle cx="445" cy="140" r="7" fill="#E10600" stroke="#FFFFFF" stroke-width="2" />
+                                <text x="445" y="255" text-anchor="middle" fill="#CBD5E1" font-size="12" font-weight="600">Halo & Kokpit</text>
+                            </g>
+
+                            <!-- 4. Sidepod -->
+                            <g class="hotspot cursor-pointer" data-part="sidepod">
+                                <circle cx="330" cy="105" r="14" fill="#E10600" fill-opacity="0.25" />
+                                <circle cx="330" cy="105" r="7" fill="#E10600" stroke="#FFFFFF" stroke-width="2" />
+                                <text x="330" y="38" text-anchor="middle" fill="#CBD5E1" font-size="12" font-weight="600">Sidepod</text>
+                            </g>
+
+                            <!-- 5. Zemin & Difüzör -->
+                            <g class="hotspot cursor-pointer" data-part="floor">
+                                <circle cx="260" cy="192" r="14" fill="#E10600" fill-opacity="0.25" />
+                                <circle cx="260" cy="192" r="7" fill="#E10600" stroke="#FFFFFF" stroke-width="2" />
+                                <text x="260" y="255" text-anchor="middle" fill="#CBD5E1" font-size="12" font-weight="600">Zemin & Difüzör</text>
+                            </g>
+
+                            <!-- 6. Arka Kanat & DRS -->
+                            <g class="hotspot cursor-pointer" data-part="rear-wing">
+                                <circle cx="82" cy="140" r="14" fill="#E10600" fill-opacity="0.25" />
+                                <circle cx="82" cy="140" r="7" fill="#E10600" stroke="#FFFFFF" stroke-width="2" />
+                                <text x="82" y="38" text-anchor="middle" fill="#CBD5E1" font-size="12" font-weight="600">Arka Kanat</text>
+                            </g>
+                        </svg>
+                    </div>
+                    <p class="text-xs text-slate-500 text-center mt-2">Aracın önü sağ tarafa bakmaktadır. Kırmızı noktalara tıklayarak parça detayını seçebilirsiniz.</p>
+                </div>
+
+                <!-- Parça Seçim Sekmeleri ve Detay Kartı -->
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+                    <!-- Sol Sekme Butonları -->
+                    <div class="lg:col-span-4 flex flex-row lg:flex-col gap-2 overflow-x-auto pb-2 lg:pb-0" id="part-tabs">
+                        <button data-part="front-wing" class="part-tab active-tab text-left px-4 py-3.5 rounded-xl font-semibold text-sm transition-all whitespace-nowrap bg-[#E10600] text-white">
+                            1. Ön Kanat
+                        </button>
+                        <button data-part="halo" class="part-tab text-left px-4 py-3.5 rounded-xl font-semibold text-sm transition-all whitespace-nowrap bg-[#151821] text-slate-300 hover:bg-[#1E222E] border border-[#242936]">
+                            2. Halo Koruma Sistemi
+                        </button>
+                        <button data-part="sidepod" class="part-tab text-left px-4 py-3.5 rounded-xl font-semibold text-sm transition-all whitespace-nowrap bg-[#151821] text-slate-300 hover:bg-[#1E222E] border border-[#242936]">
+                            3. Sidepod (Yan Hava Girişleri)
+                        </button>
+                        <button data-part="floor" class="part-tab text-left px-4 py-3.5 rounded-xl font-semibold text-sm transition-all whitespace-nowrap bg-[#151821] text-slate-300 hover:bg-[#1E222E] border border-[#242936]">
+                            4. Zemin ve Difüzör (Venturi)
+                        </button>
+                        <button data-part="rear-wing" class="part-tab text-left px-4 py-3.5 rounded-xl font-semibold text-sm transition-all whitespace-nowrap bg-[#151821] text-slate-300 hover:bg-[#1E222E] border border-[#242936]">
+                            5. Arka Kanat ve DRS
+                        </button>
+                        <button data-part="tyres" class="part-tab text-left px-4 py-3.5 rounded-xl font-semibold text-sm transition-all whitespace-nowrap bg-[#151821] text-slate-300 hover:bg-[#1E222E] border border-[#242936]">
+                            6. Yarış Lastikleri
+                        </button>
+                    </div>
+
+                    <!-- Sağ Açıklama Kartı -->
+                    <div class="lg:col-span-8 bg-[#151821] border border-[#242936] rounded-2xl p-6 sm:p-8 min-h-[260px] flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center justify-between gap-4 mb-4">
+                                <span id="part-badge" class="px-3 py-1 rounded-md bg-[#E10600]/15 text-[#E10600] text-xs font-bold uppercase tracking-wider">
+                                    Aerodinamik Başlangıç
+                                </span>
+                                <span id="part-contribution" class="text-xs font-medium text-slate-400">
+                                    Downforce Payı: ~%25
+                                </span>
+                            </div>
+                            <h3 id="part-title" class="text-2xl font-bold text-white mb-3">Ön Kanat</h3>
+                            <p id="part-desc" class="text-slate-300 leading-relaxed mb-6">
+                                Havanın araçla ilk temas ettiği noktadır. İki temel görevi vardır: Ön tekerlekleri piste bastırarak direksiyon tepkisini keskinleştirmek ve havayı ön lastiklerin oluşturduğu türbülanstan uzaklaştırıp aracın gövdesine ve zeminine düzenli şekilde yönlendirmek.
+                            </p>
+                        </div>
+                        <div class="pt-4 border-t border-[#242936] flex flex-wrap items-center justify-between gap-2 text-xs text-slate-400">
+                            <span id="part-material">Malzeme: Çok katmanlı karbon fiber kompozit</span>
+                            <span id="part-fact" class="text-slate-300 font-medium">Ön kanat açısı pit stoplarda saniyeler içinde ayarlanabilir.</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. Hibrit Güç Ünitesi ve ERS Bölümü -->
+        <section id="guc-unitesi" class="py-20 border-b border-[#242936]">
+            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="mb-12">
+                    <div class="text-xs font-bold text-[#E10600] uppercase tracking-wider mb-2">1.6 LİTRE V6 TURBO HİBRİT</div>
+                    <h2 class="text-3xl sm:text-4xl font-bold text-white mb-3">Hibrit Güç Ünitesi ve Enerji Geri Kazanımı</h2>
+                    <p class="text-slate-400 max-w-2xl">
+                        Modern Formula 1 motorları sadece benzin yakan üniteler değildir; frenleme ve egzoz ısısından elde edilen enerjiyi elektriğe dönüştüren karmaşık bir hibrit mimariye sahiptir.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <!-- Kart 1: İçten Yanmalı Motor (ICE) -->
+                    <div class="bg-[#151821] border border-[#242936] rounded-2xl p-6 sm:p-7">
+                        <div class="w-10 h-10 rounded-xl bg-[#E10600]/15 text-[#E10600] flex items-center justify-center font-bold mb-4">
+                            ICE
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-2">1.6L V6 İçten Yanmalı Motor</h3>
+                        <p class="text-sm text-slate-400 leading-relaxed mb-4">
+                            15.000 devir/dakika (RPM) sınırına kadar çıkabilen 6 silindirli kompakt motor, tek başına yaklaşık 800+ beygir güç üretir. Özel yanma odası teknolojisiyle yakıtın her damlasından maksimum verim alınır.
+                        </p>
+                        <div class="text-xs font-medium text-slate-300 bg-[#0B0D11] px-3 py-2 rounded-lg border border-[#242936]">
+                            Silindir Hacmi: 1600 cc • Maksimum Devir: 15.000 RPM
+                        </div>
+                    </div>
+
+                    <!-- Kart 2: Turboşarj -->
+                    <div class="bg-[#151821] border border-[#242936] rounded-2xl p-6 sm:p-7">
+                        <div class="w-10 h-10 rounded-xl bg-sky-500/15 text-sky-400 flex items-center justify-center font-bold mb-4">
+                            TRB
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-2">Ayrık Turboşarj Sistemi</h3>
+                        <p class="text-sm text-slate-400 leading-relaxed mb-4">
+                            Egzoz gazlarının basıncıyla dönen türbin, dışarıdan alınan havayı sıkıştırarak motora gönderir. F1 motorlarında kompresör ve türbin birbirinden ayrı konumlandırılarak ağırlık merkezi dengelenir.
+                        </p>
+                        <div class="text-xs font-medium text-slate-300 bg-[#0B0D11] px-3 py-2 rounded-lg border border-[#242936]">
+                            Türbin Dönüş Hızı: Dakikada ~125.000 devir
+                        </div>
+                    </div>
+
+                    <!-- Kart 3: MGU-K -->
+                    <div class="bg-[#151821] border border-[#242936] rounded-2xl p-6 sm:p-7">
+                        <div class="w-10 h-10 rounded-xl bg-emerald-500/15 text-emerald-400 flex items-center justify-center font-bold mb-4">
+                            MGU-K
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-2">Kinetik Enerji Geri Kazanımı</h3>
+                        <p class="text-sm text-slate-400 leading-relaxed mb-4">
+                            Pilot frene bastığında ortaya çıkan kinetik (hareket) enerjiyi yakalayıp bataryaya depolar. Pilot gaza bastığında ise bu enerjiyi doğrudan krank miline aktararak anlık +160 beygir ekstra elektrik gücü sağlar.
+                        </p>
+                        <div class="text-xs font-medium text-slate-300 bg-[#0B0D11] px-3 py-2 rounded-lg border border-[#242936]">
+                            Elektrik Gücü: 120 kW (Yaklaşık 161 Beygir)
+                        </div>
+                    </div>
+
+                    <!-- Kart 4: MGU-H -->
+                    <div class="bg-[#151821] border border-[#242936] rounded-2xl p-6 sm:p-7">
+                        <div class="w-10 h-10 rounded-xl bg-amber-500/15 text-amber-400 flex items-center justify-center font-bold mb-4">
+                            MGU-H
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-2">Isı Enerjisi Geri Kazanımı</h3>
+                        <p class="text-sm text-slate-400 leading-relaxed mb-4">
+                            Turboşarj miline bağlıdır ve sıcak egzoz gazlarından elektrik üretir. Ayrıca turbonun devrini yüksek tutarak "turbo gecikmesini" (turbo lag) tamamen ortadan kaldırır.
+                        </p>
+                        <div class="text-xs font-medium text-slate-300 bg-[#0B0D11] px-3 py-2 rounded-lg border border-[#242936]">
+                            Enerji Limiti: Sınırsız geri kazanım kapasitesi
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. İnteraktif Sürüş ve Lastik Simülatörü (JS) -->
+        <section id="simulator" class="py-20 border-b border-[#242936]">
+            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="mb-12">
+                    <div class="text-xs font-bold text-[#E10600] uppercase tracking-wider mb-2">ETKİLEŞİMLİ TELEMETRİ</div>
+                    <h2 class="text-3xl sm:text-4xl font-bold text-white mb-3">Lastik Hamuru ve DRS Simülatörü</h2>
+                    <p class="text-slate-400 max-w-2xl">
+                        Yarış stratejisinin temelini oluşturan lastik seçimini ve düzlüklerde hız kazandıran DRS (Sürtünme Azaltma Sistemi) kanadını test ederek aracın tepkilerini gözlemleyin.
+                    </p>
+                </div>
+
+                <div class="bg-[#151821] border border-[#242936] rounded-2xl p-6 sm:p-8">
+                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+                        
+                        <!-- Sol Kontrol Paneli -->
+                        <div class="lg:col-span-5 space-y-6">
+                            <!-- Lastik Hamuru Seçimi -->
+                            <div>
+                                <label class="block text-sm font-semibold text-white mb-3">1. Lastik Hamuru Seçin</label>
+                                <div class="grid grid-cols-3 gap-3">
+                                    <button type="button" data-tyre="soft" class="tyre-btn flex flex-col items-center p-3.5 rounded-xl border-2 border-[#E10600] bg-[#0B0D11] transition-all">
+                                        <span class="w-6 h-6 rounded-full border-4 border-[#E10600] mb-2"></span>
+                                        <span class="text-xs font-bold text-white">YUMUŞAK</span>
+                                        <span class="text-[11px] text-slate-400">Soft (C5)</span>
+                                    </button>
+                                    <button type="button" data-tyre="medium" class="tyre-btn flex flex-col items-center p-3.5 rounded-xl border border-[#242936] bg-[#0B0D11] hover:border-slate-500 transition-all">
+                                        <span class="w-6 h-6 rounded-full border-4 border-amber-400 mb-2"></span>
+                                        <span class="text-xs font-bold text-white">ORTA</span>
+                                        <span class="text-[11px] text-slate-400">Medium (C3)</span>
+                                    </button>
+                                    <button type="button" data-tyre="hard" class="tyre-btn flex flex-col items-center p-3.5 rounded-xl border border-[#242936] bg-[#0B0D11] hover:border-slate-500 transition-all">
+                                        <span class="w-6 h-6 rounded-full border-4 border-slate-100 mb-2"></span>
+                                        <span class="text-xs font-bold text-white">SERT</span>
+                                        <span class="text-[11px] text-slate-400">Hard (C1)</span>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <!-- DRS Kontrolü -->
+                            <div class="pt-4 border-t border-[#242936]">
+                                <div class="flex items-center justify-between mb-2">
+                                    <label for="drs-toggle" class="text-sm font-semibold text-white">2. Arka Kanat DRS Modu</label>
+                                    <span id="drs-status-badge" class="px-2.5 py-0.5 rounded text-xs font-bold bg-slate-800 text-slate-400">KAPALI</span>
+                                </div>
+                                <p class="text-xs text-slate-400 mb-4">
+                                    Öndeki araca 1 saniyeden fazla yaklaşıldığında düzlüklerde arka kanat kapağı açılarak hava direnci azaltılır.
+                                </p>
+                                <button type="button" id="drs-toggle" class="w-full py-3 px-4 rounded-xl bg-[#0B0D11] border border-[#242936] hover:border-emerald-500/50 text-sm font-bold text-white flex items-center justify-center space-x-2 transition-all">
+                                    <span id="drs-indicator" class="w-2.5 h-2.5 rounded-full bg-slate-500"></span>
+                                    <span id="drs-btn-text">DRS Kanadını Aç</span>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Sağ Telemetri ve Görsel Çıktı Paneli -->
+                        <div class="lg:col-span-7 bg-[#0B0D11] border border-[#242936] rounded-xl p-6 flex flex-col justify-between space-y-6">
+                            <!-- Üst Sayısal Özetler -->
+                            <div class="grid grid-cols-2 sm:grid-cols-3 gap-4">
+                                <div class="bg-[#151821] p-4 rounded-xl border border-[#242936]">
+                                    <div class="text-xs text-slate-400 mb-1">Tahmini Tur Süresi</div>
+                                    <div id="sim-laptime" class="text-xl sm:text-2xl font-extrabold text-white font-mono">1:27.420</div>
+                                </div>
+                                <div class="bg-[#151821] p-4 rounded-xl border border-[#242936]">
+                                    <div class="text-xs text-slate-400 mb-1">Düzlük Sonu Hızı</div>
+                                    <div id="sim-topspeed" class="text-xl sm:text-2xl font-extrabold text-white font-mono">332 km/s</div>
+                                </div>
+                                <div class="col-span-2 sm:col-span-1 bg-[#151821] p-4 rounded-xl border border-[#242936]">
+                                    <div class="text-xs text-slate-400 mb-1">İdeal Stint (Ömür)</div>
+                                    <div id="sim-stint" class="text-xl sm:text-2xl font-extrabold text-[#E10600] font-mono">14 Tur</div>
+                                </div>
+                            </div>
+
+                            <!-- Performans Çubukları -->
+                            <div class="space-y-4">
+                                <!-- Yol Tutuşu -->
+                                <div>
+                                    <div class="flex justify-between text-xs font-medium mb-1.5">
+                                        <span class="text-slate-300">Viraj Yol Tutuşu (Grip)</span>
+                                        <span id="sim-grip-val" class="text-white font-bold">%95</span>
+                                    </div>
+                                    <div class="w-full h-2.5 bg-[#151821] rounded-full overflow-hidden">
+                                        <div id="sim-grip-bar" class="h-full bg-[#E10600] rounded-full transition-all duration-300" style="width: 95%"></div>
+                                    </div>
+                                </div>
+
+                                <!-- Dayanıklılık -->
+                                <div>
+                                    <div class="flex justify-between text-xs font-medium mb-1.5">
+                                        <span class="text-slate-300">Lastik Dayanıklılığı</span>
+                                        <span id="sim-durability-val" class="text-white font-bold">%40</span>
+                                    </div>
+                                    <div class="w-full h-2.5 bg-[#151821] rounded-full overflow-hidden">
+                                        <div id="sim-durability-bar" class="h-full bg-amber-400 rounded-full transition-all duration-300" style="width: 40%"></div>
+                                    </div>
+                                </div>
+
+                                <!-- Hava Direnci (Drag) -->
+                                <div>
+                                    <div class="flex justify-between text-xs font-medium mb-1.5">
+                                        <span class="text-slate-300">Aerodinamik Sürtünme (Drag)</span>
+                                        <span id="sim-drag-val" class="text-white font-bold">%85</span>
+                                    </div>
+                                    <div class="w-full h-2.5 bg-[#151821] rounded-full overflow-hidden">
+                                        <div id="sim-drag-bar" class="h-full bg-sky-400 rounded-full transition-all duration-300" style="width: 85%"></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Mühendis Yorumu -->
+                            <div class="p-3.5 rounded-lg bg-[#151821] border border-[#242936] text-xs text-slate-300 leading-relaxed" id="sim-note">
+                                <strong>Mühendis Notu:</strong> Yumuşak hamur sıralama turları için en yüksek yol tutuşunu sunar ancak yüksek sıcaklıklarda hızla aşınır.
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. Temel Teknik Veriler Bölümü -->
+        <section id="veriler" class="py-20">
+            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="mb-12">
+                    <h2 class="text-3xl sm:text-4xl font-bold text-white mb-3">Rakamlarla Formula 1 Aracı</h2>
+                    <p class="text-slate-400 max-w-2xl">
+                        Bir F1 aracının fiziksel sınırlarını ve performans kapasitesini özetleyen temel teknik veriler.
+                    </p>
+                </div>
+
+                <!-- 6'lı İstatistik Kartları -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div class="bg-[#151821] border border-[#242936] rounded-2xl p-6">
+                        <div class="text-xs font-semibold text-slate-400 uppercase mb-1">Minimum Ağırlık</div>
+                        <div class="text-3xl font-extrabold text-white mb-2">798 <span class="text-base font-medium text-slate-400">kg</span></div>
+                        <p class="text-xs text-slate-400 leading-relaxed">Sürücü, kask ve yarış ekipmanları dahil ancak yakıt hariç yasal alt sınırdır.</p>
+                    </div>
+
+                    <div class="bg-[#151821] border border-[#242936] rounded-2xl p-6">
+                        <div class="text-xs font-semibold text-slate-400 uppercase mb-1">Maksimum Hız</div>
+                        <div class="text-3xl font-extrabold text-white mb-2">360+ <span class="text-base font-medium text-slate-400">km/s</span></div>
+                        <p class="text-xs text-slate-400 leading-relaxed">Monza ve Bakü gibi uzun düzlüklere sahip pistlerde hava koridoruyla ulaşılabilen hız.</p>
+                    </div>
+
+                    <div class="bg-[#151821] border border-[#242936] rounded-2xl p-6">
+                        <div class="text-xs font-semibold text-slate-400 uppercase mb-1">Yanal ve Fren G Kuvveti</div>
+                        <div class="text-3xl font-extrabold text-[#E10600] mb-2">5G - 6G</div>
+                        <p class="text-xs text-slate-400 leading-relaxed">Pilotlar sert frenlemelerde ve hızlı virajlarda vücut ağırlıklarının 6 katına maruz kalır.</p>
+                    </div>
+
+                    <div class="bg-[#151821] border border-[#242936] rounded-2xl p-6">
+                        <div class="text-xs font-semibold text-slate-400 uppercase mb-1">Frenleme Performansı</div>
+                        <div class="text-3xl font-extrabold text-white mb-2">~65 <span class="text-base font-medium text-slate-400">metre</span></div>
+                        <p class="text-xs text-slate-400 leading-relaxed">300 km/s hızdan 0 km/s hıza yalnızca 2.5 saniyede ve yaklaşık 65 metrede durabilir.</p>
+                    </div>
+
+                    <div class="bg-[#151821] border border-[#242936] rounded-2xl p-6">
+                        <div class="text-xs font-semibold text-slate-400 uppercase mb-1">Toplam Güç Çıkışı</div>
+                        <div class="text-3xl font-extrabold text-white mb-2">~1000 <span class="text-base font-medium text-slate-400">BG</span></div>
+                        <p class="text-xs text-slate-400 leading-relaxed">İçten yanmalı V6 motor ve elektrikli ERS ünitelerinin birleşik gücüdür.</p>
+                    </div>
+
+                    <div class="bg-[#151821] border border-[#242936] rounded-2xl p-6">
+                        <div class="text-xs font-semibold text-slate-400 uppercase mb-1">Yarış Yakıt Limiti</div>
+                        <div class="text-3xl font-extrabold text-white mb-2">110 <span class="text-base font-medium text-slate-400">kg</span></div>
+                        <p class="text-xs text-slate-400 leading-relaxed">Yaklaşık 305 km'lik bir Grand Prix yarışının tamamı bu yakıt sınırıyla tamamlanır.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Alt Bilgi (Footer) -->
+    <footer class="bg-[#08090C] border-t border-[#242936] py-10">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
+            <div class="flex items-center space-x-2">
+                <span class="w-2.5 h-5 bg-[#E10600] rounded-sm inline-block transform -skew-x-12"></span>
+                <span class="text-slate-300 font-semibold">Formula 1 Mühendislik Rehberi</span>
+            </div>
+            <p>Eğitim ve bilgilendirme amaçlı hazırlanmış tek sayfalık interaktif teknik özet.</p>
+        </div>
+    </footer>
+
+    <!-- Etkileşimli JavaScript Kodları -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // 1. Mobil Menü Kontrolü
+            const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const mobileLinks = document.querySelectorAll('.mobile-link');
+
+            mobileMenuBtn.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+
+            mobileLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenu.classList.add('hidden');
+                });
+            });
+
+            // 2. Etkileşimli Araç Parçaları Verisi ve Mantığı
+            const partsData = {
+                'front-wing': {
+                    badge: 'Aerodinamik Başlangıç',
+                    contribution: 'Downforce Payı: ~%25',
+                    title: 'Ön Kanat',
+                    desc: 'Havanın araçla ilk temas ettiği noktadır. İki temel görevi vardır: Ön tekerlekleri piste bastırarak direksiyon tepkisini keskinleştirmek ve havayı ön lastiklerin oluşturduğu türbülanstan uzaklaştırıp aracın gövdesine ve zeminine düzenli şekilde yönlendirmek.',
+                    material: 'Malzeme: Çok katmanlı karbon fiber kompozit',
+                    fact: 'Ön kanat açısı pit stoplarda saniyeler içinde ayarlanabilir.'
+                },
+                'halo': {
+                    badge: 'Sürücü Güvenliği',
+                    contribution: 'Dayanım: ~12 Ton Yük',
+                    title: 'Halo Koruma Sistemi',
+                    desc: 'Kokpitin üzerini çevreleyen ve sürücünün başını uçan parçalardan, lastiklerden veya bariyer temaslarından koruyan titanyum güvenlik yapısıdır. Havacılık sınıfı titanyumdan üretilir ve sadece 7-9 kg ağırlığındadır.',
+                    material: 'Malzeme: Grade 5 Titanyum Alaşımı',
+                    fact: 'Bir Londra çift katlı otobüsünün ağırlığını taşıyabilecek sağlamlıktadır.'
+                },
+                'sidepod': {
+                    badge: 'Soğutma & Hava Akışı',
+                    contribution: 'Termal Yönetim & Aerodinami',
+                    title: 'Sidepod (Yan Hava Girişleri)',
+                    desc: 'Sürücünün iki yanında yer alan geniş gövde bölümleridir. İçerisindeki radyatörler aracılığıyla motoru ve hibrit elektronik sistemleri soğuturken, dış yüzeyindeki özel kıvrımlar havayı arka kanada ve difüzöre doğru hızlandırır.',
+                    material: 'Malzeme: Isıya dayanıklı karbon fiber paneller',
+                    fact: 'Takımlar arasındaki en belirgin tasarım farkları sidepod şekillerinde görülür.'
+                },
+                'floor': {
+                    badge: 'Yer Etkisi (Ground Effect)',
+                    contribution: 'Downforce Payı: ~%55',
+                    title: 'Zemin ve Difüzör (Venturi Tünelleri)',
+                    desc: 'Modern F1 araçlarının en büyük yere basma kuvveti kaynağıdır. Aracın altındaki Venturi tünelleri havayı sıkıştırıp hızlandırarak düşük basınç alanı oluşturur ve aracı vakum etkisiyle asfalta çeker. Difüzör ise bu havayı arkadan tahliye eder.',
+                    material: 'Malzeme: Karbon fiber ve alt kısımda titanyum kızaklar',
+                    fact: 'Yüksek hızlarda kıvılcım çıkaran parça zeminin altındaki titanyum bloklardır.'
+                },
+                'rear-wing': {
+                    badge: 'Denge & Düzlük Hızı',
+                    contribution: 'Downforce Payı: ~%20',
+                    title: 'Arka Kanat ve DRS',
+                    desc: 'Arka lastiklerin patinaja düşmeden gücü asfalta aktarmasını sağlar. Üst kanatçıkta bulunan DRS (Sürtünme Azaltma Sistemi) mekanizması, geçiş bölgelerinde hidrolik olarak açılarak hava direncini düşürür ve araca 12-15 km/s ekstra hız kazandırır.',
+                    material: 'Malzeme: Yüksek rijitlikli karbon fiber',
+                    fact: 'DRS yalnızca yarış kontrolün belirlediği özel bölgelerde aktif edilebilir.'
+                },
+                'tyres': {
+                    badge: 'Tek Temas Noktası',
+                    contribution: 'Çap: 18 İnç Jant Yapısı',
+                    title: 'Yarış Lastikleri',
+                    desc: 'Aracın pistle temas eden tek noktasıdır. Pirelli tarafından üretilen lastikler; Yumuşak (kırmızı), Orta (sarı) ve Sert (beyaz) olmak üzere üç kuru zemin hamurunun yanı sıra yağmur koşulları için Geçiş (yeşil) ve Tam Yağmur (mavi) seçeneklerine sahiptir.',
+                    material: 'Çalışma Sıcaklığı: 90°C - 110°C arası',
+                    fact: 'Kuru zemin lastiklerinde su tahliye kanalı bulunmaz (Slick yapı).'
+                }
+            };
+
+            const partTabs = document.querySelectorAll('.part-tab');
+            const hotspots = document.querySelectorAll('.hotspot');
+
+            function selectPart(partKey) {
+                const data = partsData[partKey];
+                if (!data) return;
+
+                // İçeriği güncelle
+                document.getElementById('part-badge').textContent = data.badge;
+                document.getElementById('part-contribution').textContent = data.contribution;
+                document.getElementById('part-title').textContent = data.title;
+                document.getElementById('part-desc').textContent = data.desc;
+                document.getElementById('part-material').textContent = data.material;
+                document.getElementById('part-fact').textContent = data.fact;
+
+                // Sekme stillerini güncelle
+                partTabs.forEach(tab => {
+                    if (tab.dataset.part === partKey) {
+                        tab.classList.remove('bg-[#151821]', 'text-slate-300', 'border', 'border-[#242936]');
+                        tab.classList.add('bg-[#E10600]', 'text-white');
+                    } else {
+                        tab.classList.remove('bg-[#E10600]', 'text-white');
+                        tab.classList.add('bg-[#151821]', 'text-slate-300', 'border', 'border-[#242936]');
+                    }
+                });
+
+                // SVG Hotspot vurgusunu güncelle
+                hotspots.forEach(spot => {
+                    const circles = spot.querySelectorAll('circle');
+                    if (spot.dataset.part === partKey) {
+                        circles[0].setAttribute('r', '18');
+                        circles[0].setAttribute('fill-opacity', '0.45');
+                    } else {
+                        circles[0].setAttribute('r', '14');
+                        circles[0].setAttribute('fill-opacity', '0.25');
+                    }
+                });
+            }
+
+            partTabs.forEach(tab => {
+                tab.addEventListener('click', () => selectPart(tab.dataset.part));
+            });
+
+            hotspots.forEach(spot => {
+                spot.addEventListener('click', () => selectPart(spot.dataset.part));
+            });
+
+            // 3. Lastik & DRS Simülatörü Mantığı
+            const tyreSpecs = {
+                soft: {
+                    name: 'Yumuşak',
+                    borderColor: 'border-[#E10600]',
+                    baseTime: 87.420, // saniye cinsinden (1:27.420)
+                    baseSpeed: 332,
+                    stint: '14 Tur',
+                    grip: 95,
+                    durability: 40,
+                    baseDrag: 85,
+                    note: 'Yumuşak hamur sıralama turları ve kısa sprintler için en yüksek mekanik yol tutuşunu sunar, ancak hızlı ısınır ve çabuk aşınır.'
+                },
+                medium: {
+                    name: 'Orta',
+                    borderColor: 'border-amber-400',
+                    baseTime: 88.150, // 1:28.150
+                    baseSpeed: 334,
+                    stint: '26 Tur',
+                    grip: 80,
+                    durability: 72,
+                    baseDrag: 82,
+                    note: 'Orta hamur hız ve dayanıklılık arasında en ideal dengeyi kurar. Yarış stratejilerinin temel taşıdır.'
+                },
+                hard: {
+                    name: 'Sert',
+                    borderColor: 'border-slate-100',
+                    baseTime: 88.940, // 1:28.940
+                    baseSpeed: 336,
+                    stint: '42 Tur',
+                    grip: 65,
+                    durability: 95,
+                    baseDrag: 80,
+                    note: 'Sert hamur ısınması zaman alan fakat aşınmaya karşı son derece dirençli lastiktir. Tek pit-stop stratejileri için tercih edilir.'
+                }
+            };
+
+            let currentTyre = 'soft';
+            let isDrsOpen = false;
+
+            const tyreBtns = document.querySelectorAll('.tyre-btn');
+            const drsToggleBtn = document.getElementById('drs-toggle');
+
+            function formatLapTime(totalSeconds) {
+                const minutes = Math.floor(totalSeconds / 60);
+                const seconds = (totalSeconds % 60).toFixed(3).padStart(6, '0');
+                return `${minutes}:${seconds}`;
+            }
+
+            function updateSimulator() {
+                const spec = tyreSpecs[currentTyre];
+
+                // DRS açıkken tur süresi ~0.45 sn iyileşir, son hız +14 km/s artar, hava direnci %22 azalır
+                const finalTime = isDrsOpen ? spec.baseTime - 0.450 : spec.baseTime;
+                const finalSpeed = isDrsOpen ? spec.baseSpeed + 14 : spec.baseSpeed;
+                const finalDrag = isDrsOpen ? spec.baseDrag - 22 : spec.baseDrag;
+                const finalGrip = isDrsOpen ? spec.grip - 5 : spec.grip; // Düzlükte arka bastırma kuvveti azalır
+
+                // Metin güncellemeleri
+                document.getElementById('sim-laptime').textContent = formatLapTime(finalTime);
+                document.getElementById('sim-topspeed').textContent = `${finalSpeed} km/s`;
+                document.getElementById('sim-stint').textContent = spec.stint;
+
+                document.getElementById('sim-grip-val').textContent = `%${finalGrip}`;
+                document.getElementById('sim-grip-bar').style.width = `${finalGrip}%`;
+
+                document.getElementById('sim-durability-val').textContent = `%${spec.durability}`;
+                document.getElementById('sim-durability-bar').style.width = `${spec.durability}%`;
+
+                document.getElementById('sim-drag-val').textContent = `%${finalDrag}`;
+                document.getElementById('sim-drag-bar').style.width = `${finalDrag}%`;
+
+                const drsNote = isDrsOpen 
+                    ? ' DRS kanadı açık olduğu için arka kanat hava direnci düştü ve düzlük hızı zirveye çıktı!' 
+                    : '';
+                document.getElementById('sim-note').innerHTML = `<strong>Mühendis Notu:</strong> ${spec.note}${drsNote}`;
+
+                // Lastik buton çerçeveleri
+                tyreBtns.forEach(btn => {
+                    const type = btn.dataset.tyre;
+                    btn.classList.remove('border-2', 'border-[#E10600]', 'border-amber-400', 'border-slate-100', 'border', 'border-[#242936]');
+                    if (type === currentTyre) {
+                        btn.classList.add('border-2', tyreSpecs[type].borderColor);
+                    } else {
+                        btn.classList.add('border', 'border-[#242936]');
+                    }
+                });
+
+                // DRS Buton ve Rozet Durumu
+                const drsBadge = document.getElementById('drs-status-badge');
+                const drsIndicator = document.getElementById('drs-indicator');
+                const drsBtnText = document.getElementById('drs-btn-text');
+
+                if (isDrsOpen) {
+                    drsBadge.textContent = 'AKTİF (AÇIK)';
+                    drsBadge.className = 'px-2.5 py-0.5 rounded text-xs font-bold bg-emerald-500/20 text-emerald-400';
+                    drsIndicator.className = 'w-2.5 h-2.5 rounded-full bg-emerald-400 animate-ping';
+                    drsBtnText.textContent = 'DRS Kanadını Kapat';
+                    drsToggleBtn.classList.add('border-emerald-500', 'bg-emerald-950/20');
+                } else {
+                    drsBadge.textContent = 'KAPALI';
+                    drsBadge.className = 'px-2.5 py-0.5 rounded text-xs font-bold bg-slate-800 text-slate-400';
+                    drsIndicator.className = 'w-2.5 h-2.5 rounded-full bg-slate-500';
+                    drsBtnText.textContent = 'DRS Kanadını Aç';
+                    drsToggleBtn.classList.remove('border-emerald-500', 'bg-emerald-950/20');
+                }
+            }
+
+            tyreBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    currentTyre = btn.dataset.tyre;
+                    updateSimulator();
+                });
+            });
+
+            drsToggleBtn.addEventListener('click', () => {
+                isDrsOpen = !isDrsOpen;
+                updateSimulator();
+            });
+
+            // Başlangıç durumunu yükle
+            updateSimulator();
+        });
+    </script>
 </body>
-
-
-
-
-  
-</center>
+</html>
